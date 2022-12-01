@@ -1,0 +1,157 @@
+@use './../abstracts' as *;
+
+.nav{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-between;
+
+    @media(max-width: 800px){
+        margin-top: 2rem;
+    }
+}
+
+.nav__svg-container{
+  margin-left: 1.25rem;
+  transform: scale(2);
+
+  @media(max-width: 600px){
+    transform: scale(1.5);
+  }
+}
+
+.logo__svg{
+
+    width: 4rem;
+    height:3.5rem;
+}
+
+.nav__ul{
+    list-style: none;
+    flex: 0 1 35%;
+    display: flex;
+    justify-content: space-between;
+    color: $color-nav;
+    font-size: 1.5rem;
+    .nav__ul-li{
+        &:hover{
+            color: $color-hover-bottom;
+            cursor: pointer;
+        }
+    }
+
+    @media(max-width: 1800px){
+        font-size: 1rem;
+    }
+
+    @media(max-width: 1200px){
+        flex: 0 1 50%;
+    }
+
+    @media(max-width: 800px){
+        display: none;
+    }
+}
+
+.nav__menu-container{
+    display: none;
+
+    @media(max-width: 800px){
+        display: block;
+    }
+}
+
+.sidenav{
+
+    display: block;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    pointer-events: none;
+
+    .sidenav__opened:checked ~ &{
+        pointer-events: all;
+    }
+}
+
+.sidenav__opened{
+    display: none;
+}
+
+.sidenav__container{
+    position: absolute;
+    z-index: 9999999;
+    width: 70%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px 0 0 5px;
+    box-shadow: 0 0 1rem black ;
+    transform: translate(calc(100% + 1rem), 0%);
+    will-change: transform;
+    transition: transform 1s linear;
+
+    .sidenav__opened:checked ~ .sidenav &{
+        transform: translate(0%, 0%);
+        transition: transform 1s linear;
+    }
+
+    
+
+}
+
+.sidenav-background-close{
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 30%;
+    background-color: rgba(0,0,0,0.85);
+
+    opacity: 0;
+    transition: opacity 1s linear;
+
+    .sidenav__opened:checked ~ .sidenav &{
+        opacity: 1;
+        transition: opacity 1s linear;
+    }
+
+}
+
+.sidenav__closed{
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    text-align: center;
+    line-height: 2;
+
+
+}
+
+
+.sidenav__navigation-list{
+    list-style: none;
+    margin-top: 7.5rem;
+    margin-left: 2.5rem;
+
+    
+}
+
+.sidenav__navigation-list-item{
+    margin-bottom: 1rem;
+     
+}
+
+.sidenav__navigation-list-link{
+    color: $color-first;
+    text-decoration: none;
+    font-size: 2rem;
+}
